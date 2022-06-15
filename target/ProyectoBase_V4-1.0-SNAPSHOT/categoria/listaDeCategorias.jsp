@@ -53,7 +53,7 @@
                         <c:forEach items="${listado}" var="dto">
                             <tr>
                                 <td>
-                                    <a href="CategoriaServlet?accion=ver&id=${dto.entidad.idCategoria}" class="btn btn-outline-success">
+                                    <a href="CategoriaServlet?accion=ver&id=${dto.idCategoria}" class="btn btn-outline-success">
                                         <c:out value="${dto.entidad.idCategoria}"/>
                                     </a>
                                 </td>

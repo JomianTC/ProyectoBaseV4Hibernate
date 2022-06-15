@@ -48,28 +48,44 @@ public class CategoriaDAO {
         return resultados;
     }
 
+    public Categoria read(Categoria dto) {
 
-    
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transaction = session.getTransaction();
+
+        try {
+            transaction.begin();
+            dto = session.find(Categoria.class, dto.getIdCategoria());
+
+            transaction.commit();
+        } catch (HibernateException he) {
+            if (transaction != null && transaction.isActive()) {
+                transaction.rollback();
+            }
+        }
+
+        return dto;
+    }
+
     //Herramienta de DEBUGG
-
     public static void main(String[] args) {
 
         CategoriaDAO dao = new CategoriaDAO();
-        //CategoriaDTO dto = new CategoriaDTO();
+        Categoria dto = new Categoria();
 
-        //dto.getEntidad().setIdCategoria(5);
+        dto.setIdCategoria(2);
         //dto.getEntidad().setNombreCategoria("Redes");
         //dto.getEntidad().setDescripcionCategoria("Articulos De Redes");
-
         try {
             //dao.create(dto);
             //dao.update(dto);
             //dao.delete(dto);
-            //System.out.println(dao.read(dto));
-            System.out.println(dao.readAll());
+            dto = dao.read(dto);
+            System.out.println(dto);
+            //System.out.println(dao.readAll());
         } catch (Exception ex) {
             Logger.getLogger(CategoriaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-     
+
 }
