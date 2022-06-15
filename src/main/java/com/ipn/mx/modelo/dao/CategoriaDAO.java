@@ -4,7 +4,6 @@
  */
 package com.ipn.mx.modelo.dao;
 
-import com.ipn.mx.modelo.dto.CategoriaDTO;
 import com.ipn.mx.modelo.entidades.Categoria;
 import com.ipn.mx.modelo.utilerias.HibernateUtil;
 import java.sql.CallableStatement;
@@ -27,25 +26,40 @@ import org.hibernate.query.Query;
  */
 public class CategoriaDAO {
 
-    public List readAll() {
+    public void create(Categoria dto) {
 
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        Transaction transaction = session.getTransaction();
-        List resultados = new ArrayList();
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction t = s.getTransaction();
 
         try {
-            transaction.begin();
-            Query q = session.createQuery("from Categoria", Categoria.class);
-            resultados = q.list();
 
-            transaction.commit();
+            t.begin();
+            s.persist(dto);
+            t.commit();
+
         } catch (HibernateException he) {
-            if (transaction != null && transaction.isActive()) {
-                transaction.rollback();
+            if (t != null && t.isActive()) {
+                t.rollback();
             }
         }
+    }
 
-        return resultados;
+    public void update(Categoria dto) {
+
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction t = s.getTransaction();
+
+        try {
+
+            t.begin();
+            s.merge(dto);
+            t.commit();
+
+        } catch (HibernateException he) {
+            if (t != null && t.isActive()) {
+                t.rollback();
+            }
+        }
     }
 
     public Categoria read(Categoria dto) {
@@ -65,6 +79,27 @@ public class CategoriaDAO {
         }
 
         return dto;
+    }
+
+    public List readAll() {
+
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transaction = session.getTransaction();
+        List resultados = new ArrayList();
+
+        try {
+            transaction.begin();
+            Query q = session.createQuery("from Categoria", Categoria.class);
+            resultados = q.list();
+
+            transaction.commit();
+        } catch (HibernateException he) {
+            if (transaction != null && transaction.isActive()) {
+                transaction.rollback();
+            }
+        }
+
+        return resultados;
     }
 
     //Herramienta de DEBUGG

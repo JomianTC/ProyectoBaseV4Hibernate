@@ -42,13 +42,13 @@
                 <div class="card-body">
                     <table class="table table-bordered border-info">
                         <tr class="text-info">
-                            <td><strong>Clave de la Categoria: </strong> <c:out value="${categoria.entidad.idCategoria}"/></td>
+                            <td><strong>Clave de la Categoria: </strong> <c:out value="${categoria.idCategoria}"/></td>
                         </tr>
                         <tr class="text-info">
-                            <td><strong>Nombre de la Categoria: </strong> <c:out value="${categoria.entidad.nombreCategoria}"/></td>
+                            <td><strong>Nombre de la Categoria: </strong> <c:out value="${categoria.nombreCategoria}"/></td>
                         </tr>
                         <tr class="text-info">
-                            <td><strong>Descripcion de la Categoria: </strong> <c:out value="${categoria.entidad.descripcionCategoria}"/></td>
+                            <td><strong>Descripcion de la Categoria: </strong> <c:out value="${categoria.descripcionCategoria}"/></td>
                         </tr>
                     </table>
                 </div>

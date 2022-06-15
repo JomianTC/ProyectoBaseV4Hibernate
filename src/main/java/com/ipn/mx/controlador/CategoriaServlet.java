@@ -5,7 +5,7 @@
 package com.ipn.mx.controlador;
 
 import com.ipn.mx.modelo.dao.CategoriaDAO;
-import com.ipn.mx.modelo.dto.CategoriaDTO;
+import com.ipn.mx.modelo.entidades.Categoria;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -138,26 +138,62 @@ public class CategoriaServlet extends HttpServlet {
     }
 
     private void crearCategoria(HttpServletRequest request, HttpServletResponse response) {
-        
+        RequestDispatcher rd = request.getRequestDispatcher("/categoria/categoriaForm.jsp");
+
+        try {
+            rd.forward(request, response);
+        } catch (ServletException | IOException ex) {
+            Logger.getLogger(CategoriaServlet.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void actualizarCategoria(HttpServletRequest request, HttpServletResponse response) {
-        
+
     }
 
     private void eliminarCategoria(HttpServletRequest request, HttpServletResponse response) {
-        
+
     }
 
     private void almacenarCategoria(HttpServletRequest request, HttpServletResponse response) {
-        
+        CategoriaDAO dao = new CategoriaDAO();
+        Categoria dto = new Categoria();
+
+        if (request.getParameter("txtId").isEmpty()) {
+
+            dto.setNombreCategoria(request.getParameter("txtNombre"));
+            dto.setDescripcionCategoria(request.getParameter("txtDescripcion"));
+
+            try {
+                dao.create(dto);
+                listadoCategorias(request, response);
+            } catch (Exception ex) {
+                Logger.getLogger(CategoriaServlet.class
+                        .getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+
+            dto.setIdCategoria(Integer.parseInt(request.getParameter("txtId")));
+            dto.setNombreCategoria(request.getParameter("txtNombre"));
+            dto.setDescripcionCategoria(request.getParameter("txtDescripcion"));
+
+            try {
+                dao.update(dto);
+                listadoCategorias(request, response);
+            } catch (Exception ex) {
+                Logger.getLogger(CategoriaServlet.class
+                        .getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
     }
 
     private void mostrarCategoria(HttpServletRequest request, HttpServletResponse response) {
-        
+
     }
 
     private void mostrarReporte(HttpServletRequest request, HttpServletResponse response) {
-        
+
     }
 }
