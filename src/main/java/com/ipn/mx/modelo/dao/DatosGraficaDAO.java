@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.ipn.mx.modelo.dao;
-import com.ipn.mx.modelo.dto.DatosGrafica;
+import com.ipn.mx.modelo.entidades.DatosGrafica;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;

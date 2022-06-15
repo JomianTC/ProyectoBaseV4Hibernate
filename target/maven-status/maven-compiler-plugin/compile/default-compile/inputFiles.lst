@@ -1,4 +1,4 @@
-C:\Users\JomianTC\Desktop\Original Heroku Hibernate\src\main\java\com\ipn\mx\modelo\dto\DatosGrafica.java
+C:\Users\JomianTC\Desktop\Original Heroku Hibernate\src\main\java\com\ipn\mx\modelo\entidades\DatosGrafica.java
 C:\Users\JomianTC\Desktop\Original Heroku Hibernate\src\main\java\com\ipn\mx\controlador\ArticuloServlet.java
 C:\Users\JomianTC\Desktop\Original Heroku Hibernate\src\main\java\com\ipn\mx\modelo\utilerias\conexionJasper.java
 C:\Users\JomianTC\Desktop\Original Heroku Hibernate\src\main\java\com\ipn\mx\modelo\dao\CategoriaDAO.java
@@ -6,6 +6,5 @@ C:\Users\JomianTC\Desktop\Original Heroku Hibernate\src\main\java\com\ipn\mx\mod
 C:\Users\JomianTC\Desktop\Original Heroku Hibernate\src\main\java\com\ipn\mx\modelo\dao\DatosGraficaDAO.java
 C:\Users\JomianTC\Desktop\Original Heroku Hibernate\src\main\java\com\ipn\mx\modelo\dao\ArticuloDAO.java
 C:\Users\JomianTC\Desktop\Original Heroku Hibernate\src\main\java\com\ipn\mx\modelo\entidades\Articulo.java
-C:\Users\JomianTC\Desktop\Original Heroku Hibernate\src\main\java\com\ipn\mx\modelo\dto\ArticuloDTO.java
 C:\Users\JomianTC\Desktop\Original Heroku Hibernate\src\main\java\com\ipn\mx\controlador\CategoriaServlet.java
 C:\Users\JomianTC\Desktop\Original Heroku Hibernate\src\main\java\com\ipn\mx\modelo\entidades\Categoria.java

@@ -5,9 +5,12 @@
 package com.ipn.mx.controlador;
 
 import com.ipn.mx.modelo.dao.ArticuloDAO;
+import com.ipn.mx.modelo.dao.CategoriaDAO;
 import com.ipn.mx.modelo.dao.DatosGraficaDAO;
-import com.ipn.mx.modelo.dto.ArticuloDTO;
-import com.ipn.mx.modelo.dto.DatosGrafica;
+import com.ipn.mx.modelo.entidades.Articulo;
+import com.ipn.mx.modelo.entidades.Categoria;
+import com.ipn.mx.modelo.entidades.DatosGrafica;
+import com.ipn.mx.modelo.utilerias.conexionJasper;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -151,7 +154,7 @@ public class ArticuloServlet extends HttpServlet {
             request.setAttribute("listado", lista);
             RequestDispatcher rd = request.getRequestDispatcher("/articulo/listaDeArticulos.jsp");
             rd.forward(request, response);
-        } catch (SQLException | ServletException | IOException ex) {
+        } catch (ServletException | IOException ex) {
             Logger.getLogger(ArticuloServlet.class
                     .getName()).log(Level.SEVERE, null, ex);
         }
@@ -170,16 +173,16 @@ public class ArticuloServlet extends HttpServlet {
 
     private void actualizarArticulo(HttpServletRequest request, HttpServletResponse response) {
         ArticuloDAO dao = new ArticuloDAO();
-        ArticuloDTO dto = new ArticuloDTO();
+        Articulo dto = new Articulo();
 
-        dto.getEntidad().setIdArticulo(Integer.parseInt(request.getParameter("id")));
+        dto.setIdArticulo(Integer.parseInt(request.getParameter("id")));
 
         try {
             dto = dao.read(dto);
             request.setAttribute("dto", dto);
             RequestDispatcher rd = request.getRequestDispatcher("/articulo/articuloForm.jsp");
             rd.forward(request, response);
-        } catch (SQLException | ServletException | IOException ex) {
+        } catch (ServletException | IOException ex) {
             Logger.getLogger(ArticuloServlet.class
                     .getName()).log(Level.SEVERE, null, ex);
         }
@@ -187,14 +190,14 @@ public class ArticuloServlet extends HttpServlet {
 
     private void eliminarArticulo(HttpServletRequest request, HttpServletResponse response) {
         ArticuloDAO dao = new ArticuloDAO();
-        ArticuloDTO dto = new ArticuloDTO();
+        Articulo dto = new Articulo();
 
-        dto.getEntidad().setIdArticulo(Integer.parseInt(request.getParameter("id")));
+        dto.setIdArticulo(Integer.parseInt(request.getParameter("id")));
 
         try {
             dao.delete(dto);
             listadoArticulo(request, response);
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(ArticuloServlet.class
                     .getName()).log(Level.SEVERE, null, ex);
         }
@@ -202,40 +205,48 @@ public class ArticuloServlet extends HttpServlet {
 
     private void almacenarArticulo(HttpServletRequest request, HttpServletResponse response) {
         ArticuloDAO dao = new ArticuloDAO();
-        ArticuloDTO dto = new ArticuloDTO();
+        CategoriaDAO cato = new CategoriaDAO();
+        Articulo dto = new Articulo();
+        Categoria cat = new Categoria();
 
         if (request.getParameter("txtIdA").isEmpty()) {
 
-            dto.getEntidad().setNombreArticulo(request.getParameter("txtNombreA"));
-            dto.getEntidad().setDescripcionArticulo(request.getParameter("txtDescripcionA"));
-            dto.getEntidad().setExistencias(Integer.parseInt(request.getParameter("txtExistenciasA")));
-            dto.getEntidad().setStockMinimo(Integer.parseInt(request.getParameter("txtStockMinimoA")));
-            dto.getEntidad().setStockMaximo(Integer.parseInt(request.getParameter("txtStockMaximoA")));
-            dto.getEntidad().setPrecio(Double.parseDouble(request.getParameter("txtPrecioA")));
-            dto.getEntidad().setIdCategoria(Integer.parseInt(request.getParameter("txtidCategoria")));
+            cat.setIdCategoria(Integer.parseInt(request.getParameter("txtidCategoria")));
+            cat = cato.read(cat);
+
+            dto.setNombreArticulo(request.getParameter("txtNombreA"));
+            dto.setDescripcionArticulo(request.getParameter("txtDescripcionA"));
+            dto.setExistencias(Integer.parseInt(request.getParameter("txtExistenciasA")));
+            dto.setStockMinimo(Integer.parseInt(request.getParameter("txtStockMinimoA")));
+            dto.setStockMaximo(Integer.parseInt(request.getParameter("txtStockMaximoA")));
+            dto.setPrecio(Double.parseDouble(request.getParameter("txtPrecioA")));
+            dto.setCategoria(cat);
 
             try {
                 dao.create(dto);
                 listadoArticulo(request, response);
-            } catch (SQLException ex) {
+            } catch (Exception ex) {
                 Logger.getLogger(ArticuloServlet.class
                         .getName()).log(Level.SEVERE, null, ex);
             }
         } else {
 
-            dto.getEntidad().setIdArticulo(Integer.parseInt(request.getParameter("txtIdA")));
-            dto.getEntidad().setNombreArticulo(request.getParameter("txtNombreA"));
-            dto.getEntidad().setDescripcionArticulo(request.getParameter("txtDescripcionA"));
-            dto.getEntidad().setExistencias(Integer.parseInt(request.getParameter("txtExistenciasA")));
-            dto.getEntidad().setStockMinimo(Integer.parseInt(request.getParameter("txtStockMinimoA")));
-            dto.getEntidad().setStockMaximo(Integer.parseInt(request.getParameter("txtStockMaximoA")));
-            dto.getEntidad().setPrecio(Double.parseDouble(request.getParameter("txtPrecioA")));
-            dto.getEntidad().setIdCategoria(Integer.parseInt(request.getParameter("txtidCategoria")));
+            cat.setIdCategoria(Integer.parseInt(request.getParameter("txtidCategoria")));
+            cat = cato.read(cat);
+
+            dto.setIdArticulo(Integer.parseInt(request.getParameter("txtIdA")));
+            dto.setNombreArticulo(request.getParameter("txtNombreA"));
+            dto.setDescripcionArticulo(request.getParameter("txtDescripcionA"));
+            dto.setExistencias(Integer.parseInt(request.getParameter("txtExistenciasA")));
+            dto.setStockMinimo(Integer.parseInt(request.getParameter("txtStockMinimoA")));
+            dto.setStockMaximo(Integer.parseInt(request.getParameter("txtStockMaximoA")));
+            dto.setPrecio(Double.parseDouble(request.getParameter("txtPrecioA")));
+            dto.setCategoria(cat);
 
             try {
                 dao.update(dto);
                 listadoArticulo(request, response);
-            } catch (SQLException ex) {
+            } catch (Exception ex) {
                 Logger.getLogger(ArticuloServlet.class
                         .getName()).log(Level.SEVERE, null, ex);
             }
@@ -245,33 +256,33 @@ public class ArticuloServlet extends HttpServlet {
 
     private void mostrarArticulo(HttpServletRequest request, HttpServletResponse response) {
         ArticuloDAO dao = new ArticuloDAO();
-        ArticuloDTO dto = new ArticuloDTO();
+        Articulo dto = new Articulo();
 
-        dto.getEntidad().setIdArticulo(Integer.parseInt(request.getParameter("id")));
+        dto.setIdArticulo(Integer.parseInt(request.getParameter("id")));
 
         try {
             dto = dao.read(dto);
             request.setAttribute("articulo", dto);
             RequestDispatcher rd = request.getRequestDispatcher("/articulo/verArticulo.jsp");
             rd.forward(request, response);
-        } catch (SQLException | ServletException | IOException ex) {
+        } catch (ServletException | IOException ex) {
             Logger.getLogger(ArticuloServlet.class
                     .getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    private void mostrarReporte(HttpServletRequest request, HttpServletResponse response) {
+    private void mostrarReporte(HttpServletRequest request, HttpServletResponse response) throws SQLException {
         ServletOutputStream sos = null;
 
         try {
-            ArticuloDAO dao = new ArticuloDAO();
+            conexionJasper cj = new conexionJasper();
             sos = response.getOutputStream();
             File reporte;
             byte[] b;
 
             reporte = new File(getServletConfig().getServletContext().getRealPath("/reportes/ReportePostgressArticulo.jasper"));
 
-            b = JasperRunManager.runReportToPdf(reporte.getPath(), null, dao.obtenerConexion());
+            b = JasperRunManager.runReportToPdf(reporte.getPath(), null, cj.obtenerConexion());
 
             response.setContentType("application/pdf");
             response.setContentLength(b.length);
