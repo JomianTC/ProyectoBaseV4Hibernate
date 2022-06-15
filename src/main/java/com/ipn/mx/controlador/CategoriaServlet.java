@@ -150,6 +150,20 @@ public class CategoriaServlet extends HttpServlet {
 
     private void actualizarCategoria(HttpServletRequest request, HttpServletResponse response) {
 
+        CategoriaDAO dao = new CategoriaDAO();
+        Categoria dto = new Categoria();
+
+        dto.setIdCategoria(Integer.parseInt(request.getParameter("id")));
+
+        try {
+            dto = dao.read(dto);
+            request.setAttribute("dto", dto);
+            RequestDispatcher rd = request.getRequestDispatcher("/categoria/categoriaForm.jsp");
+            rd.forward(request, response);
+        } catch (ServletException | IOException ex) {
+            Logger.getLogger(CategoriaServlet.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void eliminarCategoria(HttpServletRequest request, HttpServletResponse response) {
@@ -191,6 +205,20 @@ public class CategoriaServlet extends HttpServlet {
 
     private void mostrarCategoria(HttpServletRequest request, HttpServletResponse response) {
 
+        CategoriaDAO dao = new CategoriaDAO();
+        Categoria dto = new Categoria();
+
+        dto.setIdCategoria(Integer.parseInt(request.getParameter("id")));
+
+        try {
+            dto = dao.read(dto);
+            request.setAttribute("categoria", dto);
+            RequestDispatcher rd = request.getRequestDispatcher("/categoria/verCategoria.jsp");
+            rd.forward(request, response);
+        } catch (ServletException | IOException ex) {
+            Logger.getLogger(CategoriaServlet.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void mostrarReporte(HttpServletRequest request, HttpServletResponse response) {
