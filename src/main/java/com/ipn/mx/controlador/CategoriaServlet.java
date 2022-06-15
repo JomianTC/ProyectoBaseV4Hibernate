@@ -168,6 +168,18 @@ public class CategoriaServlet extends HttpServlet {
 
     private void eliminarCategoria(HttpServletRequest request, HttpServletResponse response) {
 
+        CategoriaDAO dao = new CategoriaDAO();
+        Categoria dto = new Categoria();
+
+        dto.setIdCategoria(Integer.parseInt(request.getParameter("id")));
+
+        try {
+            dao.delete(dto);
+            listadoCategorias(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(CategoriaServlet.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void almacenarCategoria(HttpServletRequest request, HttpServletResponse response) {

@@ -62,6 +62,24 @@ public class CategoriaDAO {
         }
     }
 
+    public void delete(Categoria dto) {
+
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction t = s.getTransaction();
+
+        try {
+
+            t.begin();
+            s.remove(dto);
+            t.commit();
+
+        } catch (HibernateException he) {
+            if (t != null && t.isActive()) {
+                t.rollback();
+            }
+        }
+    }
+
     public Categoria read(Categoria dto) {
 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();

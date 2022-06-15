@@ -44,20 +44,20 @@
                         <div class="mb-3">
                             <label for="txtId" class="form-label text-info">Clave de la Categoria</label>
                             <input type="text" class="form-control" id="txtId" name="txtId"
-                                   value="${dto.entidad.idCategoria}"
+                                   value="${dto.idCategoria}"
                                    placeholder="Clave de la Categoria"/>
                         </div>
                         <div class="mb-3">
                             <label for="txtNombre" class="form-label text-info">Nombre de la Categoria</label>
                             <input type="text" class="form-control" id="txtNombre" name="txtNombre"
-                                   value="${dto.entidad.nombreCategoria}"
+                                   value="${dto.nombreCategoria}"
                                    placeholder="Nombre de la Categoria"
                                    required/>
                         </div>
                         <div class="mb-3">
                             <label for="txtDescripcion" class="form-label text-info">Descripcion de la Categoria</label>
                             <input type="text" class="form-control" id="txtDescripcion" name="txtDescripcion"
-                                   value="${dto.entidad.descripcionCategoria}"
+                                   value="${dto.descripcionCategoria}"
                                    placeholder="Descripcion de la Categoria"
                                    required/>
                         </div>
