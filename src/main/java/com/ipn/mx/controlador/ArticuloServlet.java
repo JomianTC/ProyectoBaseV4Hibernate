@@ -193,6 +193,7 @@ public class ArticuloServlet extends HttpServlet {
         Articulo dto = new Articulo();
 
         dto.setIdArticulo(Integer.parseInt(request.getParameter("id")));
+        dto = dao.read(dto);
 
         try {
             dao.delete(dto);
