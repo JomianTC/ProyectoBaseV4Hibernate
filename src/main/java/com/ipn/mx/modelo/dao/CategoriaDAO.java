@@ -132,9 +132,9 @@ public class CategoriaDAO {
         try {
             //dao.create(dto);
             //dao.update(dto);
-            //dao.delete(dto);
             dto = dao.read(dto);
-            System.out.println(dto);
+            dao.delete(dto);
+            //System.out.println(dto);
             //System.out.println(dao.readAll());
         } catch (Exception ex) {
             Logger.getLogger(CategoriaDAO.class.getName()).log(Level.SEVERE, null, ex);

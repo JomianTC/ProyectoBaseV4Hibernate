@@ -172,6 +172,7 @@ public class CategoriaServlet extends HttpServlet {
         Categoria dto = new Categoria();
 
         dto.setIdCategoria(Integer.parseInt(request.getParameter("id")));
+        dto = dao.read(dto);
 
         try {
             dao.delete(dto);
