@@ -167,7 +167,7 @@ public class CategoriaServlet extends HttpServlet {
         try {
             dto = dao.read(dto);
             request.setAttribute("dto", dto);
-            RequestDispatcher rd = request.getRequestDispatcher("/categoria/RHCategoria.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/categoria/categoriaForm.jsp");
             rd.forward(request, response);
         } catch (ServletException | IOException ex) {
             Logger.getLogger(CategoriaServlet.class
@@ -252,7 +252,7 @@ public class CategoriaServlet extends HttpServlet {
             File reporte;
             byte[] b;
 
-            reporte = new File(getServletConfig().getServletContext().getRealPath("/reportes/ReportePostgress.jasper"));
+            reporte = new File(getServletConfig().getServletContext().getRealPath("/reportes/RHCategoria.jasper"));
 
             b = JasperRunManager.runReportToPdf(reporte.getPath(), null, cj.obtenerConexion());
 
