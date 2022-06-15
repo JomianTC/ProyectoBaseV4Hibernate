@@ -6,6 +6,7 @@ package com.ipn.mx.controlador;
 
 import com.ipn.mx.modelo.dao.CategoriaDAO;
 import com.ipn.mx.modelo.entidades.Categoria;
+import com.ipn.mx.modelo.utilerias.conexionJasper;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -30,7 +31,7 @@ import net.sf.jasperreports.engine.JasperRunManager;
 public class CategoriaServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
 
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
@@ -96,7 +97,11 @@ public class CategoriaServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**
@@ -110,7 +115,11 @@ public class CategoriaServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**
@@ -234,7 +243,33 @@ public class CategoriaServlet extends HttpServlet {
         }
     }
 
-    private void mostrarReporte(HttpServletRequest request, HttpServletResponse response) {
+    private void mostrarReporte(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+        ServletOutputStream sos = null;
 
+        try {
+            conexionJasper cj = new conexionJasper();
+            sos = response.getOutputStream();
+            File reporte;
+            byte[] b;
+
+            reporte = new File(getServletConfig().getServletContext().getRealPath("/reportes/ReportePostgress.jasper"));
+
+            b = JasperRunManager.runReportToPdf(reporte.getPath(), null, cj.obtenerConexion());
+
+            response.setContentType("application/pdf");
+            response.setContentLength(b.length);
+            sos.write(b, 0, b.length);
+            sos.flush();
+            sos.close();
+        } catch (IOException | JRException ex) {
+            Logger.getLogger(CategoriaServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+
+            try {
+                sos.close();
+            } catch (IOException ex) {
+                Logger.getLogger(CategoriaServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 }
