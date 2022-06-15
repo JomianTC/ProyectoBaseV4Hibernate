@@ -54,13 +54,13 @@
                             <tr>
                                 <td>
                                     <a href="CategoriaServlet?accion=ver&id=${dto.idCategoria}" class="btn btn-outline-success">
-                                        <c:out value="${dto.entidad.idCategoria}"/>
+                                        <c:out value="${dto.idCategoria}"/>
                                     </a>
                                 </td>
-                                <td><c:out value="${dto.entidad.nombreCategoria}"/></td>
-                                <td><c:out value="${dto.entidad.descripcionCategoria}"/></td>
-                                <td><a href="CategoriaServlet?accion=eliminar&id=${dto.entidad.idCategoria}" class="btn btn-outline-danger">Eliminar</a></td>
-                                <td><a href="CategoriaServlet?accion=actualizar&id=${dto.entidad.idCategoria}" class="btn btn-outline-info">Actualizar</a></td>
+                                <td><c:out value="${dto.nombreCategoria}"/></td>
+                                <td><c:out value="${dto.descripcionCategoria}"/></td>
+                                <td><a href="CategoriaServlet?accion=eliminar&id=${dto.idCategoria}" class="btn btn-outline-danger">Eliminar</a></td>
+                                <td><a href="CategoriaServlet?accion=actualizar&id=${dto.idCategoria}" class="btn btn-outline-info">Actualizar</a></td>
                             </tr>
                         </c:forEach>
                     </table>
