@@ -42,28 +42,28 @@
                 <div class="card-body">
                     <table class="table table-bordered border-info">
                         <tr class="text-info">
-                            <td><strong>Clave del Articulo: </strong> <c:out value="${articulo.entidad.idArticulo}"/></td>
+                            <td><strong>Clave del Articulo: </strong> <c:out value="${articulo.idArticulo}"/></td>
                         </tr>
                         <tr class="text-info">
-                            <td><strong>Nombre del Articulo: </strong> <c:out value="${articulo.entidad.nombreArticulo}"/></td>
+                            <td><strong>Nombre del Articulo: </strong> <c:out value="${articulo.nombreArticulo}"/></td>
                         </tr>
                         <tr class="text-info">
-                            <td><strong>Descripcion del Articulo: </strong> <c:out value="${articulo.entidad.descripcionArticulo}"/></td>
+                            <td><strong>Descripcion del Articulo: </strong> <c:out value="${articulo.descripcionArticulo}"/></td>
                         </tr>
                         <tr class="text-info">
-                            <td><strong>Existencias del Articulo: </strong> <c:out value="${articulo.entidad.existencias}"/></td>
+                            <td><strong>Existencias del Articulo: </strong> <c:out value="${articulo.existencias}"/></td>
                         </tr>
                         <tr class="text-info">
-                            <td><strong>Stock Minimo: </strong> <c:out value="${articulo.entidad.stockMinimo}"/></td>
+                            <td><strong>Stock Minimo: </strong> <c:out value="${articulo.stockMinimo}"/></td>
                         </tr>
                         <tr class="text-info">
-                            <td><strong>Stock Maximo: </strong> <c:out value="${articulo.entidad.stockMaximo}"/></td>
+                            <td><strong>Stock Maximo: </strong> <c:out value="${articulo.stockMaximo}"/></td>
                         </tr>
                         <tr class="text-info">
-                            <td><strong>Precio del Articulo: </strong> <c:out value="${articulo.entidad.precio}"/></td>
+                            <td><strong>Precio del Articulo: </strong> <c:out value="${articulo.precio}"/></td>
                         </tr>
                         <tr class="text-info">
-                            <td><strong>Clave de la Categoria: </strong> <c:out value="${articulo.entidad.idCategoria}"/></td>
+                            <td><strong>Clave de la Categoria: </strong> <c:out value="${articulo.categoria.idCategoria}"/></td>
                         </tr>
                     </table>
                 </div>

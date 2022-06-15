@@ -59,19 +59,19 @@
                         <c:forEach items="${listado}" var="dto">
                             <tr>
                                 <td>
-                                    <a href="ArticuloServlet?accion=verA&id=${dto.entidad.idArticulo}" class="btn btn-outline-success">
-                                        <c:out value="${dto.entidad.idArticulo}"/>
+                                    <a href="ArticuloServlet?accion=verA&id=${dto.idArticulo}" class="btn btn-outline-success">
+                                        <c:out value="${dto.idArticulo}"/>
                                     </a>
                                 </td>
-                                <td><c:out value="${dto.entidad.nombreArticulo}"/></td>
-                                <td><c:out value="${dto.entidad.descripcionArticulo}"/></td>
-                                <td><c:out value="${dto.entidad.existencias}"/></td>
-                                <td><c:out value="${dto.entidad.stockMinimo}"/></td>
-                                <td><c:out value="${dto.entidad.stockMaximo}"/></td>
-                                <td><c:out value="${dto.entidad.precio}"/></td>                                
-                                <td><c:out value="${dto.entidad.idCategoria}"/></td>
-                                <td><a href="ArticuloServlet?accion=eliminarA&id=${dto.entidad.idArticulo}" class="btn btn-outline-danger">Eliminar</a></td>
-                                <td><a href="ArticuloServlet?accion=actualizarA&id=${dto.entidad.idArticulo}" class="btn btn-outline-info">Actualizar</a></td>
+                                <td><c:out value="${dto.nombreArticulo}"/></td>
+                                <td><c:out value="${dto.descripcionArticulo}"/></td>
+                                <td><c:out value="${dto.existencias}"/></td>
+                                <td><c:out value="${dto.stockMinimo}"/></td>
+                                <td><c:out value="${dto.stockMaximo}"/></td>
+                                <td><c:out value="${dto.precio}"/></td>                                
+                                <td><c:out value="${dto.categoria.idCategoria}"/></td>
+                                <td><a href="ArticuloServlet?accion=eliminarA&id=${dto.idArticulo}" class="btn btn-outline-danger">Eliminar</a></td>
+                                <td><a href="ArticuloServlet?accion=actualizarA&id=${dto.idArticulo}" class="btn btn-outline-info">Actualizar</a></td>
                             </tr>
                         </c:forEach>
                     </table>

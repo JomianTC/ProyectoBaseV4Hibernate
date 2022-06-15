@@ -43,53 +43,53 @@
                         <div class="mb-3">
                             <label for="txtIdA" class="form-label text-info">Clave del Articulo</label>
                             <input type="text" class="form-control" id="txtIdA" name="txtIdA"
-                                   value="${dto.entidad.idArticulo}"
+                                   value="${dto.idArticulo}"
                                    placeholder="Clave del Articulo"/>
                         </div>
                         <div class="mb-3">
                             <label for="txtNombreA" class="form-label text-info">Nombre del Articulo</label>
                             <input type="text" class="form-control" id="txtNombreA" name="txtNombreA"
-                                   value="${dto.entidad.nombreArticulo}"
+                                   value="${dto.nombreArticulo}"
                                    placeholder="Nombre del Articulo"
                                    required/>
                         </div>
                         <div class="mb-3">
                             <label for="txtDescripcionA" class="form-label text-info">Descripcion del Articulo</label>
                             <input type="text" class="form-control" id="txtDescripcionA" name="txtDescripcionA"
-                                   value="${dto.entidad.descripcionArticulo}"
+                                   value="${dto.descripcionArticulo}"
                                    placeholder="Descripcion del Articulo"
                                    required/>
                         </div>
                         <div class="mb-3">
                             <label for="txtExistenciasA" class="form-label text-info">Existencias</label>
                             <input type="text" class="form-control" id="txtExistenciasA" name="txtExistenciasA"
-                                   value="${dto.entidad.existencias}"
+                                   value="${dto.existencias}"
                                    placeholder="Existencias"/>
                         </div>
                         <div class="mb-3">
                             <label for="txtStockMinimoA" class="form-label text-info">stock Minimo</label>
                             <input type="text" class="form-control" id="txtStockMinimoA" name="txtStockMinimoA"
-                                   value="${dto.entidad.stockMinimo}"
+                                   value="${dto.stockMinimo}"
                                    placeholder="stock Minimo"
                                    required/>
                         </div>
                         <div class="mb-3">
                             <label for="txtStockMaximoA" class="form-label text-info">stock Maximo</label>
                             <input type="text" class="form-control" id="txtStockMaximoA" name="txtStockMaximoA"
-                                   value="${dto.entidad.stockMaximo}"
+                                   value="${dto.stockMaximo}"
                                    placeholder="stock Maximo"
                                    required/>
                         </div>
                         <div class="mb-3">
                             <label for="txtPrecioA" class="form-label text-info">Clave del Articulo</label>
                             <input type="text" class="form-control" id="txtPrecioA" name="txtPrecioA"
-                                   value="${dto.entidad.precio}"
+                                   value="${dto.precio}"
                                    placeholder="Precio"/>
                         </div>
                         <div class="mb-3">
                             <label for="txtidCategoria" class="form-label text-info">Clave de la Categoria</label>
                             <input type="text" class="form-control" id="txtidCategoria" name="txtidCategoria"
-                                   value="${dto.entidad.idCategoria}"
+                                   value="${dto.categoria.idCategoria}"
                                    placeholder="Clave de la Categoria"
                                    required/>
                         </div>
