@@ -167,7 +167,7 @@ public class CategoriaServlet extends HttpServlet {
         try {
             dto = dao.read(dto);
             request.setAttribute("dto", dto);
-            RequestDispatcher rd = request.getRequestDispatcher("/categoria/categoriaForm.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/categoria/RHCategoria.jsp");
             rd.forward(request, response);
         } catch (ServletException | IOException ex) {
             Logger.getLogger(CategoriaServlet.class
